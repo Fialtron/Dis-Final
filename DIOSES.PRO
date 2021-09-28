@@ -13,6 +13,10 @@ clauses
 	padre(caos,caos).
 	padre(caos,urano).
 	padre(caos,gea).
+	padre(caos,nix).
+	padre(caos,erebo).
+	padre(caos,eter).
+	padre(caos,hermea).
 	padre(urano,cronos).
 	padre(urano,rea).
 	padre(cronos,zeus).
@@ -21,15 +25,23 @@ clauses
 	padre(cronos,hestia).
 	padre(cronos,poseidon).
 	padre(cronos,hades).
-	padre(zeus,hefesto).
+	padre(zeus,hefestos).
 	padre(zeus,ares).
-	padre(zeus,dionisio).
+	padre(zeus,hebe).
 	padre(zeus,hermes).
-	padre(zeus,atenea).
+	padre(zeus,lutia).
 	padre(zeus,artemisa).
 	padre(zeus,apolo).
 	padre(zeus,afrodita).
+	padre(zeus,artemisa).
+	padre(zeus,heracle).
 	madre(caos,caos).
+	madre(caos,nix).
+	madre(caos,erebo).
+	madre(caos,gea).
+	madre(caos,urano).
+	madre(caos,eter).
+	madre(caos,hermea).
 	madre(gea,cronos).
 	madre(gea,rea).
 	madre(rea,hestia).
