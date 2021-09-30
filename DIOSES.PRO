@@ -17,6 +17,19 @@ clauses
 	padre(caos,erebo).
 	padre(caos,eter).
 	padre(caos,hermea).
+	padre(urano,afrodita).
+	padre(urano,las_meliades).
+	padre(urano,los_gigantes).
+	padre(urano,las_erinias).
+	padre(urano,las_hecatonquiros).
+	padre(urano,los_ciclopes).
+	padre(urano,mnemosine).
+	padre(urano,hiperion).
+	padre(urano,tia).
+	padre(urano,japeto).
+	padre(urano,tetis).
+	
+	
 	padre(urano,cronos).
 	padre(urano,rea).
 	padre(cronos,zeus).
@@ -35,6 +48,7 @@ clauses
 	padre(zeus,afrodita).
 	padre(zeus,artemisa).
 	padre(zeus,heracle).
+	
 	madre(caos,caos).
 	madre(caos,nix).
 	madre(caos,erebo).
@@ -42,6 +56,18 @@ clauses
 	madre(caos,urano).
 	madre(caos,eter).
 	madre(caos,hermea).
+	madre(urano,afrodita).
+	madre(gea,las_meliades).
+	madre(gea,los_gigantes).
+	madre(gea,las_erinias).
+	madre(gea,las_hecatonquiros).
+	madre(gea,los_ciclopes).
+	madre(gea,mnemosine).
+	madre(gea,hiperion).
+	madre(gea,tia).
+	madre(gea,japeto).
+	madre(gea,tetis).
+	
 	madre(gea,cronos).
 	madre(gea,rea).
 	madre(rea,hestia).
