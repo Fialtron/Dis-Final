@@ -39,7 +39,7 @@ clauses
 	padre(hiperion,eos).
 	padre(hiperion,selene).
 	padre(hiperion,helio).
-	padre(oceano,climene).
+	padre(oceano,asia).
 	padre(oceano,metis).
 	padre(oceano,pleyone).
 	padre(ceo,leto).
@@ -59,16 +59,9 @@ clauses
 	padre(zeus,artemis).
 	padre(zeus,persefone).
 	padre(zeus,atenea).
-	padre(japeto,atlante).
-	padre(japeto,prometeo).
-	padre(japeto,epimeteo).
-	padre(hefesto,pandora).
-	padre(prometeo,deucalion).
-	padre(epimeteo,pirra).
-	padre(atlante,las_pleyades).
-	padre(atlante,las_hiades).
-	padre(hermes,pan).
-	padre(apolo,asclepio).
+	
+	padre(zeus,heracle).
+	
 	madre(caos,caos).
 	madre(caos,nix).
 	madre(caos,erebo).
@@ -98,7 +91,7 @@ clauses
 	madre(tia,eos).
 	madre(tia,selene).
 	madre(tia,helio).
-	madre(tetis,climene).
+	madre(tetis,asia).
 	madre(tetis,metis).
 	madre(tetis,pleyone).
 	madre(febe,leto).
@@ -118,15 +111,9 @@ clauses
 	madre(leto,artemis).
 	madre(demeter,persefone).
 	madre(metis,atenea).
-	madre(climene,atlante).
-	madre(climene,prometeo).
-	madre(climene,epimeteo).
-	madre(hefesto,pandora).
-	madre(pandora,pirra).
-	madre(pleyone,las_pleyades).
-	madre(pleyone,las_hiades).
-	madre(coronide,asclepio).
-	madre(afrodita,eros).
+	
+	
+	
 	abuelo(Dios1,Dios2) :- padre(Dios1,Dios3) and padre(Dios3,Dios2) .
 	abuela(Dios1,Dios2) :- madre(Dios1,Dios3) and madre(Dios3,Dios2).
 	hermano_a(Dios1,Dios2) :-  padre(Dios3,Dios1) and padre(Dios3,Dios2) and Dios1 <> Dios2.
