@@ -1,16 +1,25 @@
 domains
-	dios = symbol
+	dios,text = symbol
 
-predicates 
+predicates
+	start
+	descripcion(dios,text).
 	padre(dios,dios).
 	madre(dios,dios).
 	abuelo(dios,dios).
 	abuela(dios,dios).
 	hermano_a(dios,dios).
 	desendiente(dios,dios).
+	tio_a(dios,dios).
+	primo_a(dios,dios).
+	registro(dios,text)
 
+database
+	db_descripcion(dios,text).
+	
 clauses
-	padre(caos,caos).
+	start:- consult(diosesdb).
+	descripcion(Dios1,Text):- db_descripcion(Dios1,Text). 
 	padre(caos,urano).
 	padre(caos,gea).
 	padre(caos,nix).
@@ -39,7 +48,7 @@ clauses
 	padre(hiperion,eos).
 	padre(hiperion,selene).
 	padre(hiperion,helio).
-	padre(oceano,asia).
+	padre(oceano,climene).
 	padre(oceano,metis).
 	padre(oceano,pleyone).
 	padre(ceo,leto).
@@ -59,10 +68,16 @@ clauses
 	padre(zeus,artemis).
 	padre(zeus,persefone).
 	padre(zeus,atenea).
-	
-	padre(zeus,heracle).
-	
-	madre(caos,caos).
+	padre(japeto,atlante).
+	padre(japeto,prometeo).
+	padre(japeto,epimeteo).
+	padre(hefesto,pandora).
+	padre(prometeo,deucalion).
+	padre(epimeteo,pirra).
+	padre(atlante,las_pleyades).
+	padre(atlante,las_hiades).
+	padre(hermes,pan).
+	padre(apolo,asclepio).
 	madre(caos,nix).
 	madre(caos,erebo).
 	madre(caos,gea).
@@ -91,7 +106,7 @@ clauses
 	madre(tia,eos).
 	madre(tia,selene).
 	madre(tia,helio).
-	madre(tetis,asia).
+	madre(tetis,climene).
 	madre(tetis,metis).
 	madre(tetis,pleyone).
 	madre(febe,leto).
@@ -111,18 +126,25 @@ clauses
 	madre(leto,artemis).
 	madre(demeter,persefone).
 	madre(metis,atenea).
+	madre(climene,atlante).
+	madre(climene,prometeo).
+	madre(climene,epimeteo).
+	madre(hefesto,pandora).
+	madre(pandora,pirra).
+	madre(pleyone,las_pleyades).
+	madre(pleyone,las_hiades).
+	madre(coronide,asclepio).
+	madre(afrodita,eros).
 	
 	
-	
+
 	abuelo(Dios1,Dios2) :- padre(Dios1,Dios3) and padre(Dios3,Dios2) .
 	abuela(Dios1,Dios2) :- madre(Dios1,Dios3) and madre(Dios3,Dios2).
-	hermano_a(Dios1,Dios2) :-  padre(Dios3,Dios1) and padre(Dios3,Dios2) and Dios1 <> Dios2.
-	hermano_a(Dios1,Dios2) :-  madre(Dios3,Dios1) and madre(Dios3,Dios2) and Dios1 <> Dios2.
+	hermano_a(Dios1,Dios2) :-  padre(Dios3,Dios1) and padre(Dios3,Dios2) and Dios1 <> Dios2 or
+				   madre(Dios3,Dios1) and madre(Dios3,Dios2) and Dios1 <> Dios2.
 	desendiente(Dios1,Dios2) :- padre(Dios2,Dios1).
 	desendiente(Dios1,Dios2) :- padre(Dios3,Dios1) and desendiente(Dios3,Dios2).
-
-	
-	
-	
-	
-	
+	tio_a(Dios1,Dios2) :- padre(Dios3,Dios2) and hermano_a(Dios1,Dios3), Dios1 <> Dios2 or madre(Dios3,Dios2) and hermano_a(Dios1,Dios3), Dios1 <> Dios2, !. 
+	primo_a(Dios1,Dios2) :- padre(Dios3,Dios2) and padre(Dios4,Dios1) and hermano_a(Dios3,Dios4) or
+				madre(Dios3,Dios2) and madre(Dios4,Dios1) and hermano_a(Dios3,Dios4).	
+	registro(Dios1,Text) :- asserta(db_descripcion(Dios1,Text)) and save(diosesdb).
