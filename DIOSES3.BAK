@@ -2,7 +2,11 @@ domains
 	dios,text = symbol
 
 predicates
+	start
 	descripcion(dios,text).
+	enemigo(dios,dios).
+	amigo(dios,dios).
+	neutral(dios,dios).
 	padre(dios,dios).
 	madre(dios,dios).
 	abuelo(dios,dios).
@@ -11,13 +15,24 @@ predicates
 	desendiente(dios,dios).
 	tio_a(dios,dios).
 	primo_a(dios,dios).
-	registro(dios,text)
+	
+	registroDescripcion(dios,text).
+	registroEnemigos(dios,dios).
+	registroAmigos(dios,dios).
+	registroNeutrales(dios,dios).
 
 database
 	db_descripcion(dios,text).
-	
+	db_enemigos(dios,dios).
+	db_amigos(dios,dios).
+	db_neutrales(dios,dios).
 clauses
-	descripcion(Dios,Text) :- db_descripcion(Dios,Text).
+	start:- consult(diosesdb).
+	descripcion(Dios1,Text):- db_descripcion(Dios1,Text).
+	enemigo(Dios1,Dios2):- db_enemigos(Dios1,Dios2).
+	amigo(Dios1,Dios2) :- db_amigos(Dios1,Dios2). 
+	neutral(Dios1,Dios2) :- db_neutrales(Dios1,Dios2).
+	
 	padre(caos,urano).
 	padre(caos,gea).
 	padre(caos,nix).
@@ -145,4 +160,7 @@ clauses
 	tio_a(Dios1,Dios2) :- padre(Dios3,Dios2) and hermano_a(Dios1,Dios3), Dios1 <> Dios2 or madre(Dios3,Dios2) and hermano_a(Dios1,Dios3), Dios1 <> Dios2, !. 
 	primo_a(Dios1,Dios2) :- padre(Dios3,Dios2) and padre(Dios4,Dios1) and hermano_a(Dios3,Dios4) or
 				madre(Dios3,Dios2) and madre(Dios4,Dios1) and hermano_a(Dios3,Dios4).	
-	registro(Dios1,Text) :- asserta(db_descripcion(Dios1,Text)) and save(diosesDB).
+	registroDescripcion(Dios1,Text) :- asserta(db_descripcion(Dios1,Text)) and save(diosesdb).
+	registroEnemigos(Dios1,Dios2) :- asserta(db_enemigos(Dios1,Dios2)) and save(diosesdb).
+	registroAmigos(Dios1,Dios2) :- asserta(db_amigos(Dios1,Dios2)) and save(diosesdb).
+	registroNeutrales(Dios1,Dios2) :- asserta(db_neutrales(Dios1,Dios2)) and save(diosesdb).
